@@ -6,9 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static constants.LogoLinks.*;
 
 @RunWith(Parameterized.class)
 public class LogoClickTest
@@ -16,15 +13,17 @@ public class LogoClickTest
     private WebDriver driver;
     private static final String BROWSER_NAME = "Chrome";
     private final String logoName;
-    private final String linkURL;
     private final boolean result;
+    private final String linkName;
+    private static final String SCOOTER_LOGO_LINK = "https://qa-scooter.praktikum-services.ru/";
+    private static final String YANDEX_LOGO_LINK = "https://dzen.ru/?yredirect=true";
 
 
-    public LogoClickTest(String logoName, String linkURL, boolean result)
+    public LogoClickTest(String logoName,String linkName, boolean result)
     {
         this.logoName = logoName;
-        this.linkURL = linkURL;
         this.result=result;
+        this.linkName=linkName;
     }
     @Before
     public void before()
@@ -48,11 +47,11 @@ public class LogoClickTest
     }
 
     @Test
-    public void checkLinks()
+    public void checkLinksTest()
     {
-        driver.get(SCOOTER_LOGO_LINK);
+        driver.get("https://qa-scooter.praktikum-services.ru/");
         HomePage home = new HomePage(driver);
-        home.testLogoClickOpensCorrectLink(logoName,linkURL,result);
+        home.testLogoClickOpensCorrectLink(logoName,linkName,result);
     }
 
     @After

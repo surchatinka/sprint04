@@ -43,7 +43,7 @@ public class NotFoundOrderPageTest
     }
 
     @Test
-    public void startTest()
+    public void notFoundPagePictureTest()
     {
         driver.get("https://qa-scooter.praktikum-services.ru/");
 

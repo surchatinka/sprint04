@@ -56,7 +56,7 @@ public class OrderSequenceTest
     }
 
     @Test
-    public void checkMakeOrderSequence()
+    public void checkMakeOrderSequenceTest()
     {
         driver.get("https://qa-scooter.praktikum-services.ru/");
         HomePage home = new HomePage(driver);

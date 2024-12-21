@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import static constants.ErrorTextsOrderPage.*;
-import static constants.LogoLinks.SCOOTER_LOGO_LINK;
 
 @RunWith(Parameterized.class)
 public class OrderPageErrorsTextTest
@@ -49,7 +48,7 @@ public class OrderPageErrorsTextTest
     }
 
     @Test
-    public void checkErrorsText()
+    public void checkErrorsTextsTest()
     {
         driver.get("https://qa-scooter.praktikum-services.ru/");
         HomePage home = new HomePage(driver);
