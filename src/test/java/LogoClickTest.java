@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
+import static constants.LogoLinks.*;
 
 @RunWith(Parameterized.class)
 public class LogoClickTest
@@ -15,8 +16,6 @@ public class LogoClickTest
     private final String logoName;
     private final boolean result;
     private final String linkName;
-    private static final String SCOOTER_LOGO_LINK = "https://qa-scooter.praktikum-services.ru/";
-    private static final String YANDEX_LOGO_LINK = "https://dzen.ru/?yredirect=true";
 
 
     public LogoClickTest(String logoName,String linkName, boolean result)

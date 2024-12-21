@@ -1,10 +1,9 @@
 package model;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static constants.OrderPageKeys.SUCCESS_MADE_ORDER_WINDOW_HEADER;
-import static constants.OrderPageKeys.YES_BUTTON;
 
 public class SuccessOrderWindow
 {
@@ -13,6 +12,12 @@ public class SuccessOrderWindow
     {
         this.driver=driver;
     }
+
+    //Заголовок окна успешного  созадния заказа
+    private static final By SUCCESS_MADE_ORDER_WINDOW_HEADER = By.xpath(".//div[contains(text(),'Заказ оформлен')]/parent::div");
+
+    //Кнопка Да в окне "Хотите оформить заказ"
+    private static final By YES_BUTTON = By.xpath(".//*[contains(@class,'Button_Middle') and contains(text(),'Да')]");
 
     public void yesButtonClick()
     {

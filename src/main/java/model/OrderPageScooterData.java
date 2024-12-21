@@ -5,11 +5,25 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static constants.OrderPageKeys.*;
 
 public class OrderPageScooterData
 {
     private final WebDriver driver;
+
+    //Страница "Про аренду"
+    //Поле "*Когда привезти самокат"
+    private static final By DATE_FIELD = By.xpath(".//input[contains(@placeholder,'Когда привезти самокат')]");
+
+    //Поле "Срок аренды"
+    private static final By RENT_TIME_FIELD = By.xpath(".//*[contains(text(),'Срок аренды')]/parent::div");
+
+    //Элементы саджеста для поля "Срок аренды"
+    private static final By RENT_TIME_DROPDOWN_LIST_VALUE = By.className("Dropdown-option");
+
+    //Кнопка Заказать в форме заказа
+    private static final By MAKE_ORDER_FORM_BUTTON = By.xpath(".//*[contains(@class,'Order_Buttons')]/button[contains(text(),'Заказать')]");
+
+
 
     By rentTimeDropdownOption;
 

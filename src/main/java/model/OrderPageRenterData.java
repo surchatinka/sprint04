@@ -1,14 +1,53 @@
 package model;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static constants.OrderPageKeys.*;
 
 public class OrderPageRenterData
 {
     private final WebDriver driver;
+
+    //Страница "Для кого самокат"
+    //Поле "* Имя"
+    private static final By NAME_FIELD = By.xpath(".//input[contains(@placeholder,'Имя')]");
+
+    //Поле "* Фамилия"
+    private static final By SECOND_NAME_FIELD = By.xpath(".//input[contains(@placeholder,'Фамилия')]");
+
+    //Поле "* Адрес: куда привезти самокат"
+    private static final By ADDRESS_FIELD = By.xpath((".//input[contains(@placeholder,'Адрес')]"));
+
+    //Поле "* Телефон: на него позвонит курьер"
+    private static final By PHONE_NUMBER_FIELD = By.xpath(".//input[contains(@placeholder,'Телефон')]");
+
+    //Поле "* Станция метро"
+    private static final By STATION_FIELD = By.className("select-search__input");
+
+    //Элементы саджеста для поля "* Станция метро"
+    private static final By STATION_DROPDOWN_LIST_VALUE = By.className("select-search__row");
+
+    //Кнопка Далее
+    private static final By NEXT_BUTTON = By.xpath(".//button[text()='Далее']");
+
+
+
+    //Дополнительно
+    //Ошибка поле Имя
+    public static final By NAME_FIELD_ERROR = By.xpath(".//*[contains(@class,'ErrorMessage') and contains(text(),'имя')]");
+    //Ошибка поле Фамилия
+    public static final By SECOND_NAME_FIELD_ERROR = By.xpath(".//*[contains(@class,'ErrorMessage') and contains(text(),'фамили')]");
+    //Ошибка поле Адрес
+    public static final By ADDRESS_FIELD_ERROR = By.xpath(".//*[contains(@class,'ErrorMessage') and contains(text(),'адрес')]");
+    //Ошибка поле Телефон
+    //public static final By PHONE_NUMBER_FIELD_ERROR = By.xpath(".//*[contains(@class,'ErrorMessage') and contains(text(),'номер')]");
+    public static final By PHONE_NUMBER_FIELD_ERROR = By.xpath(".//*[contains(text(),'Введите корректный номер')]");
+
+
+
+
 
     public OrderPageRenterData(WebDriver driver)
     {

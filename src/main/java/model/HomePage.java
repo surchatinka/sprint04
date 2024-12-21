@@ -7,12 +7,38 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static constants.HomePageKeys.*;
-
 public class HomePage
 {
+
     private final WebDriver driver;
     private By makeOrderButton;
+
+    //Вопросы о важном
+    //Кнопки вопросов FAQ
+    private static final By FAQ_QUESTIONS_LOCATOR = By.className("accordion__button");
+    //Тексты ответов FAQ
+    private static final By FAQ_ANSWERS_LOCATOR = By.xpath(".//*[@class='accordion__panel']/p");
+    //Кнопка закрытия окна куки "Да все привыкли"
+    private static final By COOKIES_BAR_BUTTON = By.id("rcc-confirm-button");
+    //Кнопка Заказать в шапке страницы
+    private static final By MAKE_ORDER_BUTTON_HEADER = By.xpath(".//*[contains(@class,'Header')]/button[contains(text(),'Заказать')]");
+    //Кнопка заказать на главной странице лендинга
+    private static final By MAKE_ORDER_BUTTON_BODY = By.xpath(".//*[contains(@class,'Button_Middle') and contains(text(),'Заказать')]");
+
+    //Дополнительные
+    //Логотип Самоката
+    private static final By SCOOTER_LOGO = By.xpath(".//img[@alt='Scooter']");
+    //Логотип Яндекса
+    private static final By YANDEX_LOGO = By.xpath(".//img[@alt='Yandex']");
+    //Кнопка Статус заказа
+    private static final By ORDER_STATUS_HEADER_BUTTON = By.xpath(".//button[text()='Статус заказа']");
+    //Кнопка Go!
+    private static final By GO_HEADER_BUTTON = By.xpath(".//button[text()='Go!']");
+    //Поле Введите статус заказа в заголовке
+    private static final By ORDER_INPUT_HEADER_FIELD = By.xpath(".//input[contains(@placeholder,'номер заказа')]");
+
+    private static final String SCOOTER_LOGO_LINK = "https://qa-scooter.praktikum-services.ru/";
+    private static final String YANDEX_LOGO_LINK = "https://dzen.ru/?yredirect=true";
 
     public HomePage(WebDriver driver)
     {
