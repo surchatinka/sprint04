@@ -8,19 +8,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 
-@RunWith(Parameterized.class)
 public class NotFoundOrderPageTest
 {
     private WebDriver driver;
     private static final String BROWSER_NAME = "Chrome";
-    private final String orderNumber;
-    private final boolean testResult;
 
-    public NotFoundOrderPageTest(String orderNumber, boolean tstResult)
-    {
-        this.orderNumber=orderNumber;
-        this.testResult=tstResult;
-    }
 
     @Before
     public void startup()
@@ -33,24 +25,15 @@ public class NotFoundOrderPageTest
         driver=new WebDriverFactory().createForName(browserName);
     }
 
-    @Parameterized.Parameters
-    public static Object[][] getParams()
-    {
-        return new Object[][]
-                {
-                        {"bla bla bla",true}
-                };
-    }
-
     @Test
     public void notFoundPagePictureTest()
     {
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
         HomePage home = new HomePage(driver);
-        home.searchOrder(orderNumber);
+        home.searchOrder("bla bla bla");
         NotFoundOrderPage notFound = new NotFoundOrderPage(driver);
-        notFound.checkImage(testResult);
+        notFound.checkImage(true);
     }
 
 
