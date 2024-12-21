@@ -25,17 +25,13 @@ public class OrderPageErrorsTextTest
 
     private static final String BROWSER_NAME = "Chrome";
     private WebDriver driver;
-    private final String errorNameText;
-    private final String errorSecondNameText;
-    private final String errorAddressText;
-    private final String errorPhoneNumberText;
+    private final String errorText;
+    private final String errorFieldTag;
 
-    public OrderPageErrorsTextTest(String errorName, String errorSecondName, String errorAddressText, String errorPhoneNumberText)
+    public OrderPageErrorsTextTest(String errorText, String errorFieldTag)
     {
-        this.errorNameText = errorName;
-        this.errorSecondNameText = errorSecondName;
-        this.errorAddressText = errorAddressText;
-        this.errorPhoneNumberText = errorPhoneNumberText;
+        this.errorText = errorText;
+        this.errorFieldTag=errorFieldTag;
     }
 
     @Parameterized.Parameters
@@ -43,7 +39,10 @@ public class OrderPageErrorsTextTest
     {
         return new Object[][]
                 {
-                        {NAME_FIELD_ERROR_TEXT,SECOND_NAME_FIELD_ERROR_TEXT,ADDRESS_FIELD_ERROR_TEXT,PHONE_NUMBER_FIELD_ERROR_TEXT}
+                        {NAME_FIELD_ERROR_TEXT, "name"},
+                        {SECOND_NAME_FIELD_ERROR_TEXT,"surname"},
+                        {ADDRESS_FIELD_ERROR_TEXT,"address"},
+                        {PHONE_NUMBER_FIELD_ERROR_TEXT,"phone"}
                 };
     }
 
@@ -54,7 +53,7 @@ public class OrderPageErrorsTextTest
         HomePage home = new HomePage(driver);
         home.orderButtonClick("Header");
         OrderPageRenterData order = new OrderPageRenterData(driver);
-        order.checkAllErrors(errorNameText,errorSecondNameText,errorAddressText,errorPhoneNumberText);
+        order.checkErrorText(errorText,errorFieldTag);
     }
 
     @After

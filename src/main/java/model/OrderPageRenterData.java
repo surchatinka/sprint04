@@ -46,9 +46,6 @@ public class OrderPageRenterData
     public static final By PHONE_NUMBER_FIELD_ERROR = By.xpath(".//*[contains(text(),'Введите корректный номер')]");
 
 
-
-
-
     public OrderPageRenterData(WebDriver driver)
     {
         this.driver = driver;
@@ -56,19 +53,16 @@ public class OrderPageRenterData
 
     private void inputName(String name)
     {
-
         driver.findElement(NAME_FIELD).sendKeys(name);
     }
 
     private void inputSecondName(String secondName)
     {
-
         driver.findElement(SECOND_NAME_FIELD).sendKeys(secondName);
     }
 
     private void inputAddress(String address)
     {
-
         driver.findElement(ADDRESS_FIELD).sendKeys(address);
     }
 
@@ -102,28 +96,21 @@ public class OrderPageRenterData
         inputStation(stationName);
         buttonNextClick();
     }
-    private String getErrorText(String errorField)
+     private String getErrorText(String errorField)
     {
         switch(errorField)
         {
-            case "name": return driver.findElement(NAME_FIELD_ERROR).getText();
-            case "surname": return driver.findElement(SECOND_NAME_FIELD_ERROR).getText();
-            case "phone": return driver.findElement(PHONE_NUMBER_FIELD_ERROR).getText();
-            case "address": return driver.findElement(ADDRESS_FIELD_ERROR).getText();
+            case "name": inputName("z"); buttonNextClick(); return driver.findElement(NAME_FIELD_ERROR).getText();
+            case "surname": inputSecondName("z"); buttonNextClick(); return driver.findElement(SECOND_NAME_FIELD_ERROR).getText();
+            case "phone":  inputPhoneNumber("z"); buttonNextClick(); return driver.findElement(PHONE_NUMBER_FIELD_ERROR).getText();
+            case "address": inputAddress("z"); buttonNextClick(); return driver.findElement(ADDRESS_FIELD_ERROR).getText();
             default: throw new RuntimeException(String.format("У поля %s нет текста ошибки",errorField));
         }
     }
 
-    public void checkAllErrors(String name,String secondName,String address, String phone)
-    {
-        inputName("w");
-        inputSecondName("w");
-        inputAddress("w");
-        inputPhoneNumber("w");
-        buttonNextClick();
+    public void checkErrorText(String errorFieldText, String fieldName) {
 
-        Assert.assertEquals(name,getErrorText("name"));
-        Assert.assertEquals(secondName,getErrorText("surname"));
-        Assert.assertEquals(phone,getErrorText("phone"));
-        Assert.assertEquals(address,getErrorText("address"));}
+        String errorText = getErrorText(fieldName);
+        Assert.assertEquals(errorFieldText,errorText);
+    }
 }
