@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 public class NotFoundOrderPageTest extends BaseTest{
     @Test
     public void notFoundPagePictureTest() {
-        WebDriver driver = super.startBrowser();
+        super.startBrowser();
         HomePage home = new HomePage(driver);
         home.searchOrder("bla bla bla");
         NotFoundOrderPage notFound = new NotFoundOrderPage(driver);

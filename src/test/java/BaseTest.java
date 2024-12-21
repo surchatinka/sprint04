@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class BaseTest {
 
-    private WebDriver driver;
+    protected WebDriver driver;
     private static final String BROWSER_NAME = "Chrome";
 
     @Before
@@ -17,9 +17,8 @@ public abstract class BaseTest {
         driver=new WebDriverFactory().createForName(browserName);
     }
 
-    protected WebDriver startBrowser() {
+    protected void startBrowser() {
         driver.get("https://qa-scooter.praktikum-services.ru/");
-        return this.driver;
     }
 
     @After

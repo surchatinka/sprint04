@@ -38,7 +38,7 @@ public class OrderSequenceTest extends BaseTest {
 
     @Test
     public void checkMakeOrderSequenceTest() {
-        WebDriver driver = super.startBrowser();
+        super.startBrowser();
         HomePage home = new HomePage(driver);
         home.closeCookiesBar();
         home.scrollToOrderButton(button);

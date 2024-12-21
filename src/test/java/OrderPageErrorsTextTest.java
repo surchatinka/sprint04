@@ -30,7 +30,7 @@ public class OrderPageErrorsTextTest extends BaseTest {
     @Test
     public void checkErrorsTextsTest() {
 
-        WebDriver driver = super.startBrowser();
+        super.startBrowser();
         HomePage home = new HomePage(driver);
         home.orderButtonClick("Header");
         OrderPageRenterData order = new OrderPageRenterData(driver);

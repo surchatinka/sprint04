@@ -30,7 +30,7 @@ public class LogoClickTest extends BaseTest{
 
     @Test
     public void checkLinksTest() {
-        WebDriver driver = super.startBrowser();
+        super.startBrowser();
         HomePage home = new HomePage(driver);
         home.testLogoClickOpensCorrectLink(logoName,linkName,result);
     }

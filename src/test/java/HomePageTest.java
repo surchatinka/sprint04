@@ -2,7 +2,6 @@ import model.HomePage;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
 import static constants.FAQ.*;
 
 
@@ -38,7 +37,7 @@ public class HomePageTest extends BaseTest{
 
    @Test
     public void checkFAQIsOpenableTest() {
-       WebDriver driver = super.startBrowser();
+       super.startBrowser();
        HomePage defaultPage = new HomePage(driver);
        defaultPage.faqTextIsRight(question,answer,numberQuestion,testStatus);
     }
