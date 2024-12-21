@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SuccessOrderWindow
 {
     private final WebDriver driver;
-    public SuccessOrderWindow(WebDriver driver)
-    {
+    public SuccessOrderWindow(WebDriver driver) {
         this.driver=driver;
     }
 
@@ -19,17 +18,14 @@ public class SuccessOrderWindow
     //Кнопка Да в окне "Хотите оформить заказ"
     private static final By YES_BUTTON = By.xpath(".//*[contains(@class,'Button_Middle') and contains(text(),'Да')]");
 
-    public void yesButtonClick()
-    {
+    public void yesButtonClick() {
         driver.findElement(YES_BUTTON).click();
     }
-    public void waitForLoad()
-    {
+    public void waitForLoad() {
         new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(SUCCESS_MADE_ORDER_WINDOW_HEADER));        //driver.findElements(successMakeOrderWindow)
     }
 
-    public boolean isSuccessOrderWindowVisible()
-    {
+    public boolean isSuccessOrderWindowVisible() {
         return driver.findElement(SUCCESS_MADE_ORDER_WINDOW_HEADER).isDisplayed();
     }
 }

@@ -9,53 +9,29 @@ import org.openqa.selenium.WebDriver;
 import static constants.LogoLinks.*;
 
 @RunWith(Parameterized.class)
-public class LogoClickTest
-{
-    private WebDriver driver;
-    private static final String BROWSER_NAME = "Chrome";
+public class LogoClickTest extends BaseTest{
     private final String logoName;
     private final boolean result;
     private final String linkName;
 
-
-    public LogoClickTest(String logoName,String linkName, boolean result)
-    {
+    public LogoClickTest(String logoName,String linkName, boolean result) {
         this.logoName = logoName;
         this.result=result;
         this.linkName=linkName;
     }
-    @Before
-    public void before()
-    {
-        String browserName = System.getenv("BROWSER_NAME");
-        if(browserName==null)
-        {
-            browserName=BROWSER_NAME;
-        }
-        driver=new WebDriverFactory().createForName(browserName);
-    }
 
     @Parameterized.Parameters
-    public static Object[][] getTestData()
-    {
-        return new Object[][]
-                {
+    public static Object[][] getTestData() {
+        return new Object[][]{
                         {"Yandex",YANDEX_LOGO_LINK,true},
                         {"Scooter",SCOOTER_LOGO_LINK,true}
                 };
     }
 
     @Test
-    public void checkLinksTest()
-    {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+    public void checkLinksTest() {
+        WebDriver driver = super.startBrowser();
         HomePage home = new HomePage(driver);
         home.testLogoClickOpensCorrectLink(logoName,linkName,result);
-    }
-
-    @After
-    public void end()
-    {
-        driver.quit();
     }
 }

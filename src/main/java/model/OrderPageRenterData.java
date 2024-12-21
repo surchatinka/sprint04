@@ -6,8 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class OrderPageRenterData
-{
+public class OrderPageRenterData {
     private final WebDriver driver;
 
     //Страница "Для кого самокат"
@@ -32,8 +31,6 @@ public class OrderPageRenterData
     //Кнопка Далее
     private static final By NEXT_BUTTON = By.xpath(".//button[text()='Далее']");
 
-
-
     //Дополнительно
     //Ошибка поле Имя
     public static final By NAME_FIELD_ERROR = By.xpath(".//*[contains(@class,'ErrorMessage') and contains(text(),'имя')]");
@@ -46,46 +43,38 @@ public class OrderPageRenterData
     public static final By PHONE_NUMBER_FIELD_ERROR = By.xpath(".//*[contains(text(),'Введите корректный номер')]");
 
 
-    public OrderPageRenterData(WebDriver driver)
-    {
+    public OrderPageRenterData(WebDriver driver) {
         this.driver = driver;
     }
 
-    private void inputName(String name)
-    {
+    private void inputName(String name) {
         driver.findElement(NAME_FIELD).sendKeys(name);
     }
 
-    private void inputSecondName(String secondName)
-    {
+    private void inputSecondName(String secondName) {
         driver.findElement(SECOND_NAME_FIELD).sendKeys(secondName);
     }
 
-    private void inputAddress(String address)
-    {
+    private void inputAddress(String address) {
         driver.findElement(ADDRESS_FIELD).sendKeys(address);
     }
 
-    private void inputPhoneNumber(String phoneNumber)
-    {
+    private void inputPhoneNumber(String phoneNumber) {
         driver.findElement(PHONE_NUMBER_FIELD).sendKeys(phoneNumber);
     }
 
-
-    private void inputStation(String stationName)
-    {
+    private void inputStation(String stationName) {
         driver.findElement(STATION_FIELD).click();
         driver.findElement(STATION_FIELD).sendKeys(stationName);
         new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(STATION_DROPDOWN_LIST_VALUE));
         driver.findElement(STATION_DROPDOWN_LIST_VALUE).click();;
     }
-    private void buttonNextClick()
-    {
+
+    private void buttonNextClick() {
         driver.findElement(NEXT_BUTTON).click();
     }
 
-    public void makeOrder(String name, String secondName, String stationName, String address, String phoneNumber)
-    {
+    public void makeOrder(String name, String secondName, String stationName, String address, String phoneNumber) {
 
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.presenceOfElementLocated(NAME_FIELD));
@@ -96,10 +85,9 @@ public class OrderPageRenterData
         inputStation(stationName);
         buttonNextClick();
     }
-     private String getErrorText(String errorField)
-    {
-        switch(errorField)
-        {
+
+    private String getErrorText(String errorField) {
+        switch(errorField) {
             case "name": inputName("z"); buttonNextClick(); return driver.findElement(NAME_FIELD_ERROR).getText();
             case "surname": inputSecondName("z"); buttonNextClick(); return driver.findElement(SECOND_NAME_FIELD_ERROR).getText();
             case "phone":  inputPhoneNumber("z"); buttonNextClick(); return driver.findElement(PHONE_NUMBER_FIELD_ERROR).getText();
